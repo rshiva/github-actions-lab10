@@ -9,9 +9,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4.1.1
 
-      - run: |
-          issue_title="${{ github.event.issue.title }}"
-          if [[ "$issue_title" == *"bug"* ]]; then
+      - name: Mitigate the issue
+        env: 
+          TITLE: github.event.issue.title
+      run: |
+          if [[ "$TITLE" == *"bug"* ]]; then
             echo "Issue is about a bug!"
           else
             echo "Issue is not about a bug"
