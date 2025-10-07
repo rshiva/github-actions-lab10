@@ -11,7 +11,7 @@ jobs:
 
       - name: Mitigate the issue
         env: 
-          TITLE: github.event.issue.title
+          TITLE: ${{github.event.issue.title}}
       run: |
           if [[ "$TITLE" == *"bug"* ]]; then
             echo "Issue is about a bug!"
